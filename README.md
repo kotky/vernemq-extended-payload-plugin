@@ -11,14 +11,15 @@ Build
 Enable in Vernemq
 -----
 
-  - Manually enable
-    $ vmq-admin plugin enable --name=extendedPayload --path=PARENT_FOLDER_FULL_PATH/extendedPayload/_build/default/lib/extendedPayload
+    Manually enable
+    vmq-admin plugin enable --name=extendedPayload --path=PARENT_FOLDER_FULL_PATH/extendedPayload/_build/default/lib/extendedPayload
     
-  - On Vernemq start
+    On Vernemq start
     Add the following to the vernemq.conf file:
-    $ ## custom plugin
-    $ plugins.extendedPayload = on
-    $ plugins.extendedPayload.path = PARENT_FOLDER_FULL_PATH/extendedPayload/_build/default/lib/extendedPayload
+  
+    ## custom plugin
+    plugins.extendedPayload = on
+    plugins.extendedPayload.path = PARENT_FOLDER_FULL_PATH/extendedPayload/_build/default/lib/extendedPayload
     
 IMPORTANT NOTICES
 -----
