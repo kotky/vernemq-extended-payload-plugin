@@ -18,7 +18,6 @@ auth_on_subscribe(UserName, ClientId, [{_Topic, _QoS}|_] = Topics) ->
     ok.
 
 auth_on_publish(UserName, {_MountPoint, _ClientId} = SubscriberId, QoS, Topic, Payload, IsRetain) ->
-    error_logger:info_msg("auth_on_publish: ~p ~p ~p ~p ~p ~p", [UserName, SubscriberId, QoS, Topic, Payload, IsRetain]),
     %% do whatever you like with the params, all that matters
     %% is the return value of this function
     %%
@@ -33,16 +32,10 @@ auth_on_publish(UserName, {_MountPoint, _ClientId} = SubscriberId, QoS, Topic, P
     %% 5. return {error, whatever} -> auth chain is stopped, and message is silently dropped (unless it is a Last Will message)
     %%
     %% we return 'ok'
-    %% AdditionalData = <<"bla">>,
-    %% NewPayload= <<AdditionalData/binary, Payload/binary>>,
-    %% error_logger:info_msg("extended payload: ~p ", [NewPayload]),
-    %% {ok, [{payload, Payload}]}.
-    error_logger:info_msg("payload size: ~p ", [byte_size(Payload)]),
     if 
         byte_size(Payload)>2 -> <<FirstChar:1/binary, CleanPayload/binary>> = Payload,
                                 ClientId = <<FirstChar/binary, "\"client_id\":\"", UserName/binary, "\",">>,
                                 NewPayload = <<ClientId/binary, CleanPayload/binary>>;
         true -> NewPayload = <<"{\"client_id\":\"", UserName/binary, "\"}">>
     end,
-    error_logger:info_msg("extended payload: ~p ", [NewPayload]),
     {ok, [{payload, NewPayload}]}.
