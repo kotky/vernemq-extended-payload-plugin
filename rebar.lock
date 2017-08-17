@@ -1,0 +1,4 @@
+[{<<"vmq_commons">>,
+  {git,"git://github.com/erlio/vmq_commons.git",
+       {ref,"847d92d23ec212430bd8bace097ee91a033a8ff9"}},
+  0}].

@@ -1,0 +1,25 @@
+{application, extendedPayload,
+ [{description, "Vernemq extended payload plugin"},
+  {vsn, "0.1.0"},
+  {registered, []},
+  {mod, { extendedPayload_app, []}},
+  {applications,
+   [kernel,
+    stdlib
+   ]},
+  {env,[
+         %% this tells VerneMQ to look in the file 'extendedPayload'
+         %% for the plugin hook functions. The format is:
+         %%  {ModuleName, HookName, Arity, Opts}
+         {vmq_plugin_hooks, 
+          [
+           {extendedPayload, auth_on_publish, 6, []},
+           {extendedPayload, auth_on_subscribe, 3, []}
+          ]}
+  ]},
+  {modules, []},
+
+  {maintainers, []},
+  {licenses, ["Apache 2.0"]},
+  {links, []}
+ ]}.
