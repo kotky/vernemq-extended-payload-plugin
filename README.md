@@ -12,14 +12,14 @@ Enable in Vernemq
 -----
 
     Manually enable
-    vmq-admin plugin enable --name=extendedPayload --path=PARENT_FOLDER_FULL_PATH/extendedPayload/_build/default/lib/extendedPayload
+    vmq-admin plugin enable --name=extendedPayload --path=PARENT_FOLDER_FULL_PATH/vernemq-extended-payload-plugin/_build/default/lib/extendedPayload
     
     On Vernemq start
     Add the following to the vernemq.conf file:
   
     ## custom plugin
     plugins.extendedPayload = on
-    plugins.extendedPayload.path = PARENT_FOLDER_FULL_PATH/extendedPayload/_build/default/lib/extendedPayload
+    plugins.extendedPayload.path = PARENT_FOLDER_FULL_PATH/vernemq-extended-payload-plugin/_build/default/lib/extendedPayload
     
 IMPORTANT NOTICES
 -----
